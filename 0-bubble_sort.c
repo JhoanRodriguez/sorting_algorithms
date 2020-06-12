@@ -1,4 +1,4 @@
-include "sort.h"
+#include "sort.h"
 
 
 void swap_int(int *a, int *b)
@@ -12,10 +12,23 @@ void swap_int(int *a, int *b)
 
 void bubble_sort(int *array, size_t size)
 {
-    int x;
+    size_t x = 0;
+    size_t sorted = 1;
+    size_t tmp = 0;
 
-    for (x = 0; x < size - 1; x++ )
+    while(sorted != 0)
     {
-        if (array[x] < array[x + 1])
+        tmp = sorted;
+        for (x = 0 ; x < size - 1; x++)
+        {
+            if (array[x] > array[x + 1])
+                {
+                    swap_int(&array[x], &array[x+1]);
+                    sorted += 1;
+                }
+        }
+        if (tmp == sorted)
+             sorted = 0;
+        print_array(array, size);
     }
 }
